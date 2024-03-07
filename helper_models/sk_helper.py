@@ -1,11 +1,11 @@
 import os
 import openai
 import semantic_kernel as sk
-from dotenv import load_dotenv
+import helper_models.langchain_helper as lh
 from semantic_kernel.connectors.ai.open_ai import OpenAIChatCompletion
 
+from dotenv import load_dotenv
 load_dotenv()
-
 
 # SET UP THE KERNEL
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -29,6 +29,8 @@ def recommend_books_based_on_request(user_request):
     result = summarize(user_request)
     return str(result)
 
+def recommend_books_using_langchain(user_request):
+    return lh.recommend_book_from_csv_vector(user_query=user_request)
 
 
 def librarian_app(name="", genre="", description=""):

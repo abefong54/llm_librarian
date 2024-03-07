@@ -1,5 +1,5 @@
 import streamlit as st
-import sk_helper as sk
+import helper_models.sk_helper as sk
 import textwrap
 
 
